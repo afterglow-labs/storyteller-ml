@@ -4,13 +4,7 @@
 # https://github.com/orgs/storytold/packages/container/docker-base-images-rust-ssl/settings/actions_access
 name: Build so-vits-svc-v2 Docker Image
 on:
-  push:
-    paths:
-      - 'voice_conversion/so-vits-svc-paul-v2/**'
-    branches:
-      # NB: Default-branch doesn't work, despite Github's documentation.
-      #- $default-branch
-      - master
+  workflow_dispatch:
 env:
   IMAGE_NAME: so-vits-svc-v2
 
@@ -19,7 +13,7 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/
   push:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
     permissions:
       packages: write
       contents: read

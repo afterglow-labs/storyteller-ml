@@ -4,13 +4,7 @@
 # https://github.com/orgs/storytold/packages/container/docker-base-images-rust-ssl/settings/actions_access
 name: Build SadTalker Docker Image
 on:
-  push:
-    paths:
-      - 'animation/SadTalker/**'
-    branches:
-      # NB: Default-branch doesn't work, despite Github's documentation.
-      #- $default-branch
-      - master
+  workflow_dispatch:
 env:
   IMAGE_NAME: sadtalker
 
@@ -19,7 +13,7 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/
   push:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
     permissions:
       packages: write
       contents: read

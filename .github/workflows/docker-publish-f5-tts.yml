@@ -1,13 +1,6 @@
 name: Build F5-tts Docker Image
 on:
   workflow_dispatch: {}
-  push:
-    paths:
-      - "tts/F5-TTS/**"
-    branches:
-      # NB: Default-branch doesn't work, despite Github's documentation.
-      #- $default-branch
-      - master
 env:
   IMAGE_NAME: f5-tts
 

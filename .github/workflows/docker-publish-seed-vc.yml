@@ -1,13 +1,6 @@
 name: publish seed-vc Docker Image
 on:
   workflow_dispatch: {}
-  push:
-    paths:
-      - "voice_conversion/seed-vc/**"
-    branches:
-      # NB: Default-branch doesn't work, despite Github's documentation.
-      #- $default-branch
-      - master
 env:
   IMAGE_NAME: seed-vc
 
